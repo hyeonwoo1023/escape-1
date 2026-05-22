@@ -57,15 +57,20 @@ body{
 }
 
 .hearts{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(5, 1fr);
+
+    gap:6px;
+
+    width:170px;
+
     font-size:24px;
-    line-height:1.5;
 
-    width:180px;
+    justify-items:center;
 
-    display:flex;
-    flex-wrap:wrap;
-
-    gap:5px;
 }
 
 .stage-title{
@@ -231,9 +236,7 @@ body{
 
         <div class="life-box">
             <div class="life-title">LIFE</div>
-            <div class="hearts" id="hearts">
-                ❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️
-            </div>
+            <div class="hearts" id="hearts"></div>
         </div>
 
         <div class="stage-title">
@@ -382,18 +385,22 @@ function checkAnswer(){
 
 function updateHearts(){
 
-    let heartText = "";
+    let heartHTML = "";
 
-    for(let i=0; i<life; i++){
-        heartText += "❤️";
-    }
+    for(let i=0; i<10; i++){
 
-    for(let i=0; i<(10-life); i++){
-        heartText += "🖤";
+        if(i < life){
+            heartHTML += "<span>❤️</span>";
+        }
+
+        else{
+            heartHTML += "<span>🖤</span>";
+        }
+
     }
 
     document.getElementById("hearts")
-    .innerText = heartText;
+    .innerHTML = heartHTML;
 
 }
 
@@ -490,6 +497,8 @@ setInterval(()=>{
 },1000);
 
 loadStage();
+
+updateHearts();
 
 </script>
 
