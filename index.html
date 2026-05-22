@@ -451,6 +451,14 @@ function showHint(){
 
 }
 
+function updateHintButton(){
+
+    document.querySelector(".hint-btn")
+    .innerText =
+    `💡 힌트 보기 (${hintCount}회 남음)`;
+
+}
+    
 function updateProgress(){
 
     let html = "";
@@ -538,6 +546,8 @@ loadStage();
 
 updateHearts();
 
+updateHintButton();
+    
 </script>
 
 </body>
