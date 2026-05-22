@@ -275,7 +275,7 @@ body{
         </div>
 
         <button class="hint-btn" onclick="showHint()">
-            💡 힌트 보기
+            💡 힌트 보기(3회 남음)
         </button>
 
         <div class="progress" id="progressBar">
@@ -330,7 +330,10 @@ const stages = [
 let currentStage = 0;
 let life = 10;
 let seconds = 0;
+let hintCount = 3;
 
+const teacherPassword = "teacher123";
+    
 function loadStage(){
 
     document.getElementById("questionImage").src =
@@ -406,10 +409,45 @@ function updateHearts(){
 
 function showHint(){
 
-    alert(
-        "💡 힌트: "
-        + stages[currentStage].hint
-    );
+    if(hintCount > 0){
+
+        alert(
+            "💡 힌트: "
+            + stages[currentStage].hint
+        );
+
+        hintCount--;
+
+        updateHintButton();
+
+    }
+
+    else{
+
+        const inputPw =
+        prompt(
+            "힌트를 모두 사용했습니다.\n교사용 암호 입력:"
+        );
+
+        if(inputPw === teacherPassword){
+
+            hintCount = 3;
+
+            updateHintButton();
+
+            alert(
+                "힌트 사용 횟수가 초기화되었습니다!"
+            );
+
+        }
+
+        else{
+
+            alert("암호가 틀렸습니다.");
+
+        }
+
+    }
 
 }
 
