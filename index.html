@@ -1,92 +1,172 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>방탈출 게임</title>
+<title>수학 방탈출</title>
 
 <style>
 
 body{
     margin:0;
-    background:#0b0f18;
+    min-height:100vh;
+
+    background:
+    radial-gradient(circle at top,#1d2b4f,#0b0f18 70%);
+
     color:white;
+
     font-family:sans-serif;
 
     display:flex;
     justify-content:center;
     align-items:center;
-
-    min-height:100vh;
 }
 
 .container{
+    width:90%;
+    max-width:800px;
     text-align:center;
 }
 
 h1{
-    color:#00a2ff;
     font-size:60px;
+    margin-bottom:15px;
+    color:#00a2ff;
 }
 
-.menu{
-    margin-top:40px;
-
-    display:flex;
-    flex-direction:column;
-
-    gap:20px;
+.subtitle{
+    color:#cccccc;
+    margin-bottom:50px;
+    font-size:20px;
 }
 
-.btn{
-
-    width:320px;
-
-    padding:25px;
-
-    border-radius:20px;
-
-    background:#111827;
-
-    color:white;
-
-    text-decoration:none;
+.course{
 
     display:block;
 
-    font-size:24px;
+    text-decoration:none;
+
+    color:white;
+
+    margin-bottom:25px;
+
+    padding:30px;
+
+    border-radius:25px;
+
+    transition:0.3s;
+
+    border:2px solid rgba(255,255,255,0.1);
 
 }
 
-.btn:hover{
-    background:#0077ff;
+.course:hover{
+
+    transform:translateY(-5px);
+
+}
+
+.explorer{
+
+    background:
+    linear-gradient(
+    135deg,
+    #27ae60,
+    #2ecc71
+    );
+
+}
+
+.adventurer{
+
+    background:
+    linear-gradient(
+    135deg,
+    #d4a017,
+    #f1c40f
+    );
+
+}
+
+.master{
+
+    background:
+    linear-gradient(
+    135deg,
+    #c0392b,
+    #e74c3c
+    );
+
+}
+
+.course-title{
+
+    font-size:36px;
+
+    font-weight:bold;
+
+    margin-bottom:10px;
+
+}
+
+.course-desc{
+
+    font-size:18px;
+
 }
 
 </style>
+
 </head>
 
 <body>
 
 <div class="container">
 
-<h1>🔐 방탈출 게임</h1>
+<h1>🔐 수학 방탈출</h1>
 
-<div class="menu">
-
-<a class="btn" href="v1/">
-버전 1
-</a>
-
-<a class="btn" href="v2/">
-버전 2
-</a>
-
-<a class="btn" href="v3/">
-버전 3
-</a>
-
+<div class="subtitle">
+원하는 코스를 선택하세요
 </div>
+
+<a href="explorer/" class="course explorer">
+
+<div class="course-title">
+🟢 탐험가 코스
+</div>
+
+<div class="course-desc">
+3~4학년 추천
+</div>
+
+</a>
+
+<a href="adventurer/" class="course adventurer">
+
+<div class="course-title">
+🟡 모험가 코스
+</div>
+
+<div class="course-desc">
+5~6학년 추천
+</div>
+
+</a>
+
+<a href="master/" class="course master">
+
+<div class="course-title">
+🔴 마스터 코스
+</div>
+
+<div class="course-desc">
+도전자 전용
+</div>
+
+</a>
 
 </div>
 
