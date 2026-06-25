@@ -1,3 +1,7 @@
+/* =====================================================
+   Escape Engine v1.0
+===================================================== */
+
 *{
     margin:0;
     padding:0;
@@ -7,11 +11,14 @@
 body{
 
     background:
-    radial-gradient(circle at top,#1d2b4f,#0b0f18 70%);
+    radial-gradient(circle at top,#243b55,#141e30);
 
     color:white;
 
-    font-family:"Pretendard",sans-serif;
+    font-family:
+    "Pretendard",
+    "Malgun Gothic",
+    sans-serif;
 
     min-height:100vh;
 
@@ -21,11 +28,11 @@ body{
 
     align-items:center;
 
-    padding:25px;
+    padding:20px;
 
 }
 
-/* ----------------------------- */
+/* ===================================================== */
 
 .game-container{
 
@@ -35,7 +42,9 @@ body{
 
 }
 
-/* ----------------------------- */
+/* ===================================================== */
+/* 상단 정보 */
+/* ===================================================== */
 
 .top-bar{
 
@@ -49,41 +58,55 @@ body{
 
 }
 
-/* ----------------------------- */
-
 #lifeBox{
 
-    width:220px;
+    width:240px;
 
-    font-size:22px;
+    font-size:24px;
+
+    line-height:1.5;
+
+    word-break:break-all;
 
 }
 
 #stageTitle{
 
-    font-size:54px;
+    flex:1;
 
-    color:#00a2ff;
+    text-align:center;
+
+    font-size:50px;
 
     font-weight:bold;
 
-    text-shadow:0 0 15px #00a2ff;
+    color:#3cb4ff;
+
+    text-shadow:
+
+    0 0 10px #3cb4ff,
+
+    0 0 20px #3cb4ff;
 
 }
 
 #timer{
 
-    width:220px;
+    width:240px;
 
     text-align:right;
 
-    font-size:34px;
+    font-size:30px;
 
 }
 
-/* ----------------------------- */
+/* ===================================================== */
+/* 이미지 */
+/* ===================================================== */
 
 #imageContainer{
+
+    position:relative;
 
     background:white;
 
@@ -93,7 +116,7 @@ body{
 
     box-shadow:
 
-    0 0 30px rgba(0,0,0,.5);
+    0 10px 40px rgba(0,0,0,.5);
 
 }
 
@@ -105,15 +128,29 @@ body{
 
 }
 
+/* ===================================================== */
+/* 터치 안내 */
+/* ===================================================== */
+
 #nextGuide{
 
-    margin-top:20px;
+    position:absolute;
 
-    text-align:center;
+    left:50%;
 
-    font-size:22px;
+    bottom:20px;
 
-    color:#ffd54f;
+    transform:translateX(-50%);
+
+    background:rgba(0,0,0,.55);
+
+    color:white;
+
+    padding:12px 25px;
+
+    border-radius:50px;
+
+    font-size:20px;
 
     animation:blink 1s infinite;
 
@@ -121,15 +158,17 @@ body{
 
 }
 
-/* ----------------------------- */
+/* ===================================================== */
+/* 문제 */
+/* ===================================================== */
 
 #answerContainer{
-
-    margin-top:30px;
 
     display:none;
 
     gap:15px;
+
+    margin-top:25px;
 
 }
 
@@ -139,23 +178,25 @@ body{
 
     padding:18px;
 
+    font-size:22px;
+
     border:none;
 
     border-radius:15px;
 
-    font-size:24px;
+    outline:none;
 
 }
 
 #answerButton{
 
-    width:170px;
+    width:180px;
 
     border:none;
 
     border-radius:15px;
 
-    background:#0077ff;
+    background:#0078ff;
 
     color:white;
 
@@ -163,21 +204,29 @@ body{
 
     cursor:pointer;
 
+    transition:.2s;
+
 }
 
 #answerButton:hover{
 
-    background:#1f8fff;
+    background:#0d90ff;
 
 }
 
-/* ----------------------------- */
+/* ===================================================== */
+/* 힌트 */
+/* ===================================================== */
+
+#hintContainer{
+
+    margin-top:20px;
+
+}
 
 #hintButton{
 
     display:none;
-
-    margin-top:20px;
 
     width:100%;
 
@@ -187,31 +236,43 @@ body{
 
     border-radius:15px;
 
-    background:#1e293b;
+    background:#202938;
 
     color:white;
 
+    font-size:20px;
+
     cursor:pointer;
 
-    font-size:20px;
+    transition:.2s;
 
 }
 
-/* ----------------------------- */
+#hintButton:hover{
 
-#progressBar{
+    background:#314055;
+
+}
+
+/* ===================================================== */
+/* 진행도 */
+/* ===================================================== */
+
+#progressContainer{
 
     margin-top:30px;
+
+}
+
+#progressBar{
 
     display:flex;
 
     justify-content:center;
 
-    gap:15px;
+    gap:14px;
 
 }
-
-/* ----------------------------- */
 
 .stage-dot{
 
@@ -227,64 +288,182 @@ body{
 
 .stage-dot.active{
 
-    background:#00a2ff;
+    background:#3cb4ff;
 
-    box-shadow:0 0 10px #00a2ff;
+    box-shadow:
 
-}
-
-/* ----------------------------- */
-
-@keyframes blink{
-
-    50%{
-
-        opacity:.2;
-
-    }
+    0 0 10px #3cb4ff;
 
 }
 
-/* ----------------------------- */
+.stage-dot.complete{
 
-@media(max-width:900px){
-
-.top-bar{
-
-    flex-direction:column;
-
-    gap:15px;
+    background:#2ecc71;
 
 }
 
-#stageTitle{
+/* ===================================================== */
+/* 팝업 */
+/* ===================================================== */
 
-    font-size:38px;
+.overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.8);
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:999;
 
 }
 
-#timer{
+.popup{
+
+    width:90%;
+
+    max-width:500px;
+
+    background:#202938;
+
+    padding:40px;
+
+    border-radius:20px;
 
     text-align:center;
 
 }
 
-#storyText{
+.popup h1{
 
-    font-size:22px;
-
-}
-
-#answerContainer{
-
-    flex-direction:column;
+    margin-bottom:20px;
 
 }
 
-#answerButton{
+.popup h2{
+
+    margin-bottom:20px;
+
+}
+
+.popup p{
+
+    margin-bottom:25px;
+
+    line-height:1.8;
+
+}
+
+.popup button{
 
     width:100%;
 
+    padding:15px;
+
+    border:none;
+
+    border-radius:15px;
+
+    background:#0078ff;
+
+    color:white;
+
+    font-size:20px;
+
+    cursor:pointer;
+
 }
+
+/* ===================================================== */
+
+@keyframes blink{
+
+    50%{
+
+        opacity:.25;
+
+    }
+
+}
+
+/* ===================================================== */
+/* 모바일 */
+/* ===================================================== */
+
+@media(max-width:900px){
+
+    .top-bar{
+
+        flex-direction:column;
+
+        gap:15px;
+
+    }
+
+    #lifeBox{
+
+        width:100%;
+
+        text-align:center;
+
+        font-size:22px;
+
+    }
+
+    #stageTitle{
+
+        font-size:36px;
+
+    }
+
+    #timer{
+
+        width:100%;
+
+        text-align:center;
+
+        font-size:24px;
+
+    }
+
+    #answerContainer{
+
+        flex-direction:column;
+
+    }
+
+    #answerButton{
+
+        width:100%;
+
+    }
+
+    #nextGuide{
+
+        font-size:16px;
+
+        padding:10px 18px;
+
+    }
+
+}
+
+/* ===================================================== */
+/* 태블릿 */
+/* ===================================================== */
+
+@media(min-width:901px) and (max-width:1200px){
+
+    #stageTitle{
+
+        font-size:42px;
+
+    }
 
 }
