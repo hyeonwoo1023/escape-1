@@ -1,0 +1,310 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    background:
+    radial-gradient(circle at top,#1d2b4f,#0b0f18 70%);
+
+    color:white;
+
+    font-family:"Pretendard",sans-serif;
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:25px;
+
+}
+
+/* ----------------------------- */
+
+.game-container{
+
+    width:100%;
+
+    max-width:1100px;
+
+}
+
+/* ----------------------------- */
+
+.top-bar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:20px;
+
+}
+
+/* ----------------------------- */
+
+#lifeBox{
+
+    width:220px;
+
+    font-size:22px;
+
+}
+
+#stageTitle{
+
+    font-size:54px;
+
+    color:#00a2ff;
+
+    font-weight:bold;
+
+    text-shadow:0 0 15px #00a2ff;
+
+}
+
+#timer{
+
+    width:220px;
+
+    text-align:right;
+
+    font-size:34px;
+
+}
+
+/* ----------------------------- */
+
+#imageContainer{
+
+    background:white;
+
+    border-radius:25px;
+
+    overflow:hidden;
+
+    box-shadow:
+
+    0 0 30px rgba(0,0,0,.5);
+
+}
+
+#gameImage{
+
+    width:100%;
+
+    display:block;
+
+}
+
+/* ----------------------------- */
+
+#textContainer{
+
+    margin-top:20px;
+
+    min-height:90px;
+
+}
+
+#storyText{
+
+    font-size:28px;
+
+    line-height:1.7;
+
+    text-align:center;
+
+}
+
+/* ----------------------------- */
+
+.touch-guide{
+
+    margin-top:20px;
+
+    color:#ffd54f;
+
+    text-align:center;
+
+    font-size:22px;
+
+    animation:blink 1s infinite;
+
+}
+
+/* ----------------------------- */
+
+#answerContainer{
+
+    margin-top:30px;
+
+    display:none;
+
+    gap:15px;
+
+}
+
+#answerInput{
+
+    flex:1;
+
+    padding:18px;
+
+    border:none;
+
+    border-radius:15px;
+
+    font-size:24px;
+
+}
+
+#answerButton{
+
+    width:170px;
+
+    border:none;
+
+    border-radius:15px;
+
+    background:#0077ff;
+
+    color:white;
+
+    font-size:22px;
+
+    cursor:pointer;
+
+}
+
+#answerButton:hover{
+
+    background:#1f8fff;
+
+}
+
+/* ----------------------------- */
+
+#hintButton{
+
+    display:none;
+
+    margin-top:20px;
+
+    width:100%;
+
+    padding:18px;
+
+    border:none;
+
+    border-radius:15px;
+
+    background:#1e293b;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:20px;
+
+}
+
+/* ----------------------------- */
+
+#progressBar{
+
+    margin-top:30px;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:15px;
+
+}
+
+/* ----------------------------- */
+
+.stage-dot{
+
+    width:18px;
+
+    height:18px;
+
+    border-radius:50%;
+
+    background:#555;
+
+}
+
+.stage-dot.active{
+
+    background:#00a2ff;
+
+    box-shadow:0 0 10px #00a2ff;
+
+}
+
+/* ----------------------------- */
+
+@keyframes blink{
+
+    50%{
+
+        opacity:.2;
+
+    }
+
+}
+
+/* ----------------------------- */
+
+@media(max-width:900px){
+
+.top-bar{
+
+    flex-direction:column;
+
+    gap:15px;
+
+}
+
+#stageTitle{
+
+    font-size:38px;
+
+}
+
+#timer{
+
+    text-align:center;
+
+}
+
+#storyText{
+
+    font-size:22px;
+
+}
+
+#answerContainer{
+
+    flex-direction:column;
+
+}
+
+#answerButton{
+
+    width:100%;
+
+}
+
+}
