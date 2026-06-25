@@ -48,21 +48,21 @@ const STAGES = [
 
         folder: "stage1",
 
-        story: 4,
+        story: 5,
 
         puzzle: 1,
 
         clear: 2,
 
-        answer: "2400",
+        answer: "4",
 
-        hint: "가격의 규칙을 찾아보세요."
+        hint: "9+6이 왜 3이 되는걸까?"
 
     },
 
     {
 
-        title: "빛나는 동굴",
+        title: "버섯 마을",
 
         folder: "stage2",
 
@@ -72,12 +72,83 @@ const STAGES = [
 
         clear: 2,
 
-        answer: "538",
+        answer: "18",
 
-        hint: "세 자리 수입니다."
+        hint: "글자를 하나씩 자세히 살펴보자"
 
     }
 
+       {
+
+        title: "갈림길",
+
+        folder: "stage3",
+
+        story: 3,
+
+        puzzle: 1,
+
+        clear: 2,
+
+        answer: "125",
+
+        hint: ""점"을 찍어보자"
+
+    }
+
+       {
+
+        title: "안개 낀 호수",
+
+        folder: "stage4",
+
+        story: 2,
+
+        puzzle: 1,
+
+        clear: 2,
+
+        answer: "1113339252",
+
+        hint: ""점"을 찍어보자"
+
+    }
+
+       {
+
+        title: "함정",
+
+        folder: "stage5",
+
+        story: 3,
+
+        puzzle: 1,
+
+        clear: 2,
+
+        answer: "ㅊㅍㄱ",
+
+        hint: "천방지축 어리둥절 빙글빙글 돌아가는~"
+
+    }
+
+       {
+
+        title: "황금 나침반",
+
+        folder: "stage6",
+
+        story: 3,
+
+        puzzle: 1,
+
+        clear: 6,
+
+        answer: "42",
+
+        hint: "차이를 비교해보자!"
+
+    }
 ];
 
 
