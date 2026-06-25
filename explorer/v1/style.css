@@ -467,3 +467,87 @@ body{
     }
 
 }
+/* =====================================================
+   화면 흔들기
+===================================================== */
+
+.shake{
+
+    animation:shake .45s;
+
+}
+
+@keyframes shake{
+
+    0%{transform:translateX(0);}
+
+    20%{transform:translateX(-8px);}
+
+    40%{transform:translateX(8px);}
+
+    60%{transform:translateX(-8px);}
+
+    80%{transform:translateX(8px);}
+
+    100%{transform:translateX(0);}
+
+}
+
+
+/* =====================================================
+   정답
+===================================================== */
+
+.success{
+
+    animation:success .45s;
+
+}
+
+@keyframes success{
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        transform:scale(1.03);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+
+/* =====================================================
+   버튼
+===================================================== */
+
+.button-click{
+
+    transform:scale(.96);
+
+}
+
+
+/* =====================================================
+   이미지
+===================================================== */
+
+#gameImage{
+
+    transition:
+
+    opacity .25s,
+
+    transform .25s;
+
+}
