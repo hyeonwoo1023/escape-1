@@ -36,9 +36,11 @@ function startGame(){
 
     timer = 0;
 
-    refreshUI();
+   refreshUI();
 
-    showStory();
+   if(!loadGame()){
+
+       showStory();
 
 }
 
@@ -78,8 +80,19 @@ function showPuzzle(){
 
     updateStageTitle();
 
-    showPuzzleUI();
+   if(currentPuzzle === stage.puzzle){
 
+       showPuzzleUI();
+
+}else{
+
+       nextGuide.style.display = "block";
+
+       answerContainer.style.display = "none";
+
+       hintButton.style.display = "none";
+
+}
     fadeImage(
 
         `stages/${stage.folder}/puzzle/${currentPuzzle}.jpg`
@@ -138,7 +151,7 @@ function nextStory(){
 
 
 /* ======================================================
-    Puzzle 다음
+    다음 Puzzle
 ====================================================== */
 
 function nextPuzzle(){
@@ -149,9 +162,11 @@ function nextPuzzle(){
 
     if(currentPuzzle > stage.puzzle){
 
-        currentClear = 1;
+        answerContainer.style.display = "flex";
 
-        showClear();
+        hintButton.style.display = "block";
+
+        answerInput.focus();
 
         return;
 
@@ -160,7 +175,6 @@ function nextPuzzle(){
     showPuzzle();
 
 }
-
 
 /* ======================================================
     Clear 다음
