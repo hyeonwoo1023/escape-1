@@ -7,7 +7,6 @@
 /* ======================================================
     이미지 클릭
 ====================================================== */
-
 gameImage.addEventListener("click",()=>{
 
     switch(gameMode){
@@ -15,6 +14,16 @@ gameImage.addEventListener("click",()=>{
         case "story":
 
             nextStory();
+
+            break;
+
+        case "puzzle":
+
+            if(answerContainer.style.display==="none"){
+
+                nextPuzzle();
+
+            }
 
             break;
 
@@ -27,7 +36,6 @@ gameImage.addEventListener("click",()=>{
     }
 
 });
-
 
 /* ======================================================
     정답 확인 버튼
