@@ -56,6 +56,8 @@ answerInput.addEventListener("keydown",(e)=>{
 
     if(e.key==="Enter"){
 
+       buttonEffect(answerButton);
+
         checkAnswer();
 
     }
@@ -69,6 +71,8 @@ answerInput.addEventListener("keydown",(e)=>{
 
 hintButton.addEventListener("click",()=>{
 
+    buttonEffect(hintButton);
+   
     showHint();
 
 });
