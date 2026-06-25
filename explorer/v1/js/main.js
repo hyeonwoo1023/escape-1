@@ -1,29 +1,27 @@
-gameImage.addEventListener("click",()=>{
+/* ======================================================
+   Escape Engine v1.0
+   Main
+====================================================== */
 
-    switch(gameMode){
+/* ======================================================
+   페이지가 모두 로드되면 게임 시작
+====================================================== */
 
-        case "story":
+window.onload = function(){
 
-            nextStory();
+    startGame();
 
-            break;
+};
 
-        case "puzzle":
 
-            if(answerContainer.style.display==="none"){
+/* ======================================================
+   타이머
+====================================================== */
 
-                nextPuzzle();
+setInterval(function(){
 
-            }
+    timer++;
 
-            break;
+    updateTimer();
 
-        case "clear":
-
-            nextClear();
-
-            break;
-
-    }
-
-});
+},1000);
