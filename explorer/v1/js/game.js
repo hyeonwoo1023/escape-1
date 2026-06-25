@@ -270,13 +270,27 @@ function wrongAnswer(){
 
 function showHint(){
 
-    if(hintCount <= 0){
+    if(hintCount<=0){
 
-        teacherHintReset();
+        const pw = prompt("교사 비밀번호");
+
+        if(pw===GAME.teacherPassword){
+
+            teacherHintReset();
+
+        }
 
         return;
 
     }
+
+    hintCount--;
+
+    updateHintButton();
+
+    alert(getStage().hint);
+
+}
 
     hintCount--;
 
