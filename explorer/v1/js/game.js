@@ -238,6 +238,8 @@ function checkAnswer(){
 
     const answer =
 
+        successEffect();  
+   
         answerInput.value.trim();
 
     if(answer === stage.answer){
@@ -264,6 +266,8 @@ function wrongAnswer(){
     life--;
 
     updateLife();
+
+    wrongEffect();
 
     answerInput.value = "";
 
