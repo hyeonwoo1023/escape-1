@@ -105,39 +105,19 @@ body{
 
 }
 
-/* ----------------------------- */
-
-#textContainer{
+#nextGuide{
 
     margin-top:20px;
-
-    min-height:90px;
-
-}
-
-#storyText{
-
-    font-size:28px;
-
-    line-height:1.7;
-
-    text-align:center;
-
-}
-
-/* ----------------------------- */
-
-.touch-guide{
-
-    margin-top:20px;
-
-    color:#ffd54f;
 
     text-align:center;
 
     font-size:22px;
 
+    color:#ffd54f;
+
     animation:blink 1s infinite;
+
+    user-select:none;
 
 }
 
