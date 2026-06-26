@@ -37,10 +37,8 @@ function startGame(){
     timer = 0;
 
    refreshUI();
-
-   if(!loadGame()){
-
-       showStory();
+   
+   showStory();
 
 }
 
