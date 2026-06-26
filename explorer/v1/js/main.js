@@ -20,6 +20,8 @@ window.onload = function(){
 
 setInterval(function(){
 
+    console.log(timer);
+    
     timer++;
 
     updateTimer();
