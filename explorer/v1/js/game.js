@@ -91,44 +91,98 @@ function nextStory(){
 
 }
 
-
 /* ======================================================
-    다음 Puzzle
+   Puzzle 출력
 ====================================================== */
 
-function nextPuzzle() {
+function showPuzzle(){
+
+    gameMode = "puzzle";
 
     const stage = getStage();
 
-    currentPuzzle++;
+    updateStageTitle();
 
-    if (currentPuzzle > stage.puzzle) {
+    fadeImage(
+        `stages/${stage.folder}/puzzle/${currentPuzzle}.jpg`
+    );
 
-        answerContainer.style.display = "flex";
+    // 마지막 퍼즐이면 정답 입력창 표시
+    if(currentPuzzle === stage.puzzle){
 
-        hintButton.style.display = "block";
+        showPuzzleUI();
 
-        answerInput.focus();
+    }else{
+
+        nextGuide.style.display = "block";
+
+        answerContainer.style.display = "none";
+
+        hintButton.style.display = "none";
+
+    }
+
+}
+
+
+/* ======================================================
+   다음 Puzzle
+====================================================== */
+
+function nextPuzzle(){
+
+    const stage = getStage();
+
+    // 마지막 퍼즐에서 정답을 맞춘 경우
+    if(currentPuzzle >= stage.puzzle){
+
+        currentClear = 1;
+
+        showClear();
 
         return;
 
     }
 
+    currentPuzzle++;
+
     showPuzzle();
 
 }
 
+
 /* ======================================================
-    Clear 다음
+   Clear 출력
 ====================================================== */
 
-function nextClear() {
+function showClear(){
+
+    gameMode = "clear";
+
+    const stage = getStage();
+
+    updateStageTitle();
+
+    showClearUI();
+
+    fadeImage(
+        `stages/${stage.folder}/clear/${currentClear}.jpg`
+    );
+
+}
+
+
+/* ======================================================
+   다음 Clear
+====================================================== */
+
+function nextClear(){
 
     const stage = getStage();
 
     currentClear++;
 
-    if (currentClear > stage.clear) {
+    if(currentClear > stage.clear){
 
         nextStage();
 
@@ -141,15 +195,96 @@ function nextClear() {
 }
 
 
+
 /* ======================================================
-    다음 Stage
+   정답 확인
 ====================================================== */
 
-function nextStage() {
+function checkAnswer(){
+
+    const stage = getStage();
+
+    const answer = answerInput.value.trim();
+
+    if(answer === stage.answer){
+
+        successEffect();
+
+        answerInput.value = "";
+
+        nextPuzzle();
+
+        return;
+
+    }
+
+    wrongAnswer();
+
+}
+
+
+/* ======================================================
+   오답 처리
+====================================================== */
+
+function wrongAnswer(){
+
+    life--;
+
+    updateLife();
+
+    wrongEffect();
+
+    answerInput.value = "";
+
+    answerInput.focus();
+
+    if(life <= 0){
+
+        gameOver();
+
+    }
+
+}
+
+
+/* ======================================================
+   힌트
+====================================================== */
+
+function showHint(){
+
+    if(hintCount <= 0){
+
+        const pw = prompt("교사 비밀번호");
+
+        if(pw === GAME.teacherPassword){
+
+            teacherHintReset();
+
+        }
+
+        return;
+
+    }
+
+    hintCount--;
+
+    updateHintButton();
+
+    alert(getStage().hint);
+
+}
+
+/* ======================================================
+   다음 Stage
+====================================================== */
+
+function nextStage(){
 
     currentStage++;
 
-    if (currentStage >= STAGES.length) {
+    if(currentStage >= STAGES.length){
 
         gameClear();
 
@@ -171,113 +306,26 @@ function nextStage() {
 
 
 /* ======================================================
-    정답 확인
+   게임 오버
 ====================================================== */
 
-function checkAnswer() {
-
-    const stage = getStage();
-
-    const answer = answerInput.value.trim();
-
-    if (answer === stage.answer) {
-
-        successEffect();
-
-        answerInput.value = "";
-
-        nextPuzzle();
-
-        return;
-
-    }
-
-    wrongAnswer();
-
-}
-
-
-/* ======================================================
-    오답 처리
-====================================================== */
-
-function wrongAnswer() {
-
-    life--;
-
-    updateLife();
-
-    wrongEffect();
-
-    answerInput.value = "";
-
-    answerInput.focus();
-
-    if (life <= 0) {
-
-        gameOver();
-
-    }
-
-}
-
-
-/* ======================================================
-    힌트
-====================================================== */
-
-function showHint() {
-
-    if (hintCount <= 0) {
-
-        const pw = prompt("교사 비밀번호");
-
-        if (pw === GAME.teacherPassword) {
-
-            teacherHintReset();
-
-        }
-
-        return;
-
-    }
-
-    hintCount--;
-
-    updateHintButton();
-
-    alert(getStage().hint);
-
-}
-
-
-
-
-/* ======================================================
-    게임 오버
-====================================================== */
-
-function gameOver() {
+function gameOver(){
 
     document
-
         .getElementById("gameOverScreen")
-
         .style.display = "flex";
 
 }
 
 
 /* ======================================================
-    게임 클리어
+   게임 클리어
 ====================================================== */
 
-function gameClear() {
+function gameClear(){
 
     document
-
         .getElementById("gameClearScreen")
-
         .style.display = "flex";
 
 }
