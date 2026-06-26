@@ -29,20 +29,22 @@ function shakeScreen(){
 ====================================================== */
 
 function fadeImage(src){
-    console.log("fadeImage:", src);
 
-    gameImage.style.opacity="0";
+    gameImage.style.opacity = "0";
 
-    setTimeout(()=>{
+    const img = new Image();
 
-        gameImage.src=src;
+    img.onload = function(){
 
-        gameImage.style.opacity="1";
+        gameImage.src = src;
 
-    },250);
+        gameImage.style.opacity = "1";
+
+    };
+
+    img.src = src;
 
 }
-
 
 /* ======================================================
     정답 효과

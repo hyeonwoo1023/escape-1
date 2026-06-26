@@ -161,23 +161,6 @@ function setImage(src){
 }
 
 
-/* ======================================================
-    이미지 페이드
-====================================================== */
-
-function fadeImage(src){
-
-    gameImage.style.opacity = 0;
-
-    setTimeout(()=>{
-
-        gameImage.src = src;
-
-        gameImage.style.opacity = 1;
-
-    },250);
-
-}
 
 
 /* ======================================================
