@@ -1,10 +1,11 @@
 /* ======================================================
    Escape Engine v1.0
-   게임 엔진
+   Game Engine
 ====================================================== */
 
+
 /* ======================================================
-    현재 Stage 가져오기
+   현재 Stage 정보
 ====================================================== */
 
 function getStage(){
@@ -15,7 +16,7 @@ function getStage(){
 
 
 /* ======================================================
-    게임 시작
+   게임 시작
 ====================================================== */
 
 function startGame(){
@@ -36,15 +37,15 @@ function startGame(){
 
     timer = 0;
 
-   refreshUI();
-   
-   showStory();
+    refreshUI();
+
+    showStory();
 
 }
 
 
 /* ======================================================
-    Story 출력
+   Story 출력
 ====================================================== */
 
 function showStory(){
@@ -67,64 +68,7 @@ function showStory(){
 
 
 /* ======================================================
-    Puzzle 출력
-====================================================== */
-
-function showPuzzle(){
-
-    gameMode = "puzzle";
-
-    const stage = getStage();
-
-    updateStageTitle();
-
-   if(currentPuzzle === stage.puzzle){
-
-       showPuzzleUI();
-
-}else{
-
-       nextGuide.style.display = "block";
-
-       answerContainer.style.display = "none";
-
-       hintButton.style.display = "none";
-
-}
-    fadeImage(
-
-        `stages/${stage.folder}/puzzle/${currentPuzzle}.jpg`
-
-    );
-
-}
-
-
-/* ======================================================
-    Clear 출력
-====================================================== */
-
-function showClear(){
-
-    gameMode = "clear";
-
-    const stage = getStage();
-
-    updateStageTitle();
-
-    showClearUI();
-
-    fadeImage(
-
-        `stages/${stage.folder}/clear/${currentClear}.jpg`
-
-    );
-
-}
-
-
-/* ======================================================
-    Story 다음
+   다음 Story
 ====================================================== */
 
 function nextStory(){
@@ -152,13 +96,13 @@ function nextStory(){
     다음 Puzzle
 ====================================================== */
 
-function nextPuzzle(){
+function nextPuzzle() {
 
     const stage = getStage();
 
     currentPuzzle++;
 
-    if(currentPuzzle > stage.puzzle){
+    if (currentPuzzle > stage.puzzle) {
 
         answerContainer.style.display = "flex";
 
@@ -178,13 +122,13 @@ function nextPuzzle(){
     Clear 다음
 ====================================================== */
 
-function nextClear(){
+function nextClear() {
 
     const stage = getStage();
 
     currentClear++;
 
-    if(currentClear > stage.clear){
+    if (currentClear > stage.clear) {
 
         nextStage();
 
@@ -201,11 +145,11 @@ function nextClear(){
     다음 Stage
 ====================================================== */
 
-function nextStage(){
+function nextStage() {
 
     currentStage++;
 
-    if(currentStage >= STAGES.length){
+    if (currentStage >= STAGES.length) {
 
         gameClear();
 
@@ -230,17 +174,15 @@ function nextStage(){
     정답 확인
 ====================================================== */
 
-function checkAnswer(){
+function checkAnswer() {
 
     const stage = getStage();
 
-    const answer =
+    const answer = answerInput.value.trim();
 
-        successEffect();  
-   
-        answerInput.value.trim();
+    if (answer === stage.answer) {
 
-    if(answer === stage.answer){
+        successEffect();
 
         answerInput.value = "";
 
@@ -259,7 +201,7 @@ function checkAnswer(){
     오답 처리
 ====================================================== */
 
-function wrongAnswer(){
+function wrongAnswer() {
 
     life--;
 
@@ -271,7 +213,7 @@ function wrongAnswer(){
 
     answerInput.focus();
 
-    if(life <= 0){
+    if (life <= 0) {
 
         gameOver();
 
@@ -284,13 +226,13 @@ function wrongAnswer(){
     힌트
 ====================================================== */
 
-function showHint(){
+function showHint() {
 
-    if(hintCount<=0){
+    if (hintCount <= 0) {
 
         const pw = prompt("교사 비밀번호");
 
-        if(pw===GAME.teacherPassword){
+        if (pw === GAME.teacherPassword) {
 
             teacherHintReset();
 
@@ -308,30 +250,20 @@ function showHint(){
 
 }
 
-    hintCount--;
 
-    updateHintButton();
-
-    alert(
-
-        getStage().hint
-
-    );
-
-}
 
 
 /* ======================================================
     게임 오버
 ====================================================== */
 
-function gameOver(){
+function gameOver() {
 
     document
 
-    .getElementById("gameOverScreen")
+        .getElementById("gameOverScreen")
 
-    .style.display="flex";
+        .style.display = "flex";
 
 }
 
@@ -340,12 +272,12 @@ function gameOver(){
     게임 클리어
 ====================================================== */
 
-function gameClear(){
+function gameClear() {
 
     document
 
-    .getElementById("gameClearScreen")
+        .getElementById("gameClearScreen")
 
-    .style.display="flex";
+        .style.display = "flex";
 
 }
