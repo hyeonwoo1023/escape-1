@@ -138,7 +138,7 @@ const STAGES = [
 
         folder: "stage6",
 
-        story: 3,
+        story: 4,
 
         puzzle: 1,
 
