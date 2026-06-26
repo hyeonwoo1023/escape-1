@@ -29,6 +29,7 @@ function shakeScreen(){
 ====================================================== */
 
 function fadeImage(src){
+    console.log("fadeImage:", src);
 
     gameImage.style.opacity="0";
 
